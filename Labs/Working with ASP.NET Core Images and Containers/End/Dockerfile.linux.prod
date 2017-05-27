@@ -1,0 +1,20 @@
+FROM        microsoft/aspnetcore
+MAINTAINER  Dan Wahlin
+
+ENV         ASPNETCORE_URLS=http://*:5000
+ENV         ASPNETCORE_ENVIRONMENT=production
+
+WORKDIR     /var/www/app
+COPY        ./dist /var/www/app 
+
+ENTRYPOINT  ["dotnet", "ASPNET-Core-And-Docker.dll"]
+
+# Run the following:
+# 1. dotnet restore
+# 2. dotnet build
+# 3. dotnet publish -c Release -o dist
+# 4. docker build -f Dockerfile.linux.prod -t aspnetcore-prod . 
+# 5. docker run -d -p 5000:5000 aspnetcore-prod
+
+
+

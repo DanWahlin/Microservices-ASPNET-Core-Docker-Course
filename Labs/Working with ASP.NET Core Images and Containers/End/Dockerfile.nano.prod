@@ -1,0 +1,27 @@
+FROM        microsoft/aspnetcore:nanoserver
+MAINTAINER  Dan Wahlin
+
+ENV         ASPNETCORE_URLS=http://*:5000
+ENV         ASPNETCORE_ENVIRONMENT=production
+
+WORKDIR     /app
+
+COPY        ./dist /app
+
+ENTRYPOINT  ["dotnet", "ASPNET-Core-And-Docker.dll"]
+
+# Run the following:
+# 1. dotnet restore
+# 2. dotnet build
+# 3. dotnet publish -c Release -o dist
+# 4. docker build -f Dockerfile.nano.prod -t aspnetcore-prod .  
+
+# You will need to use the absolute path to this file's parent folder in the command below (PATH_TO_YOUR_FOLDER)
+# 5. docker run -p 5000:5000 aspnetcore-prod
+# 6. Get your container IP address:
+# docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" [containerID]
+# 7. Visit http://[containerIP]:5000 in the browser.
+
+# See https://blog.docker.com/2016/09/build-your-first-docker-windows-server-container/ for more
+# details on getting the container IP.
+

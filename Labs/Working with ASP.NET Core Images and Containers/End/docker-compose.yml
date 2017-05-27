@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+
+  linux-web:
+    container_name: aspnetcore-dev
+    image: aspnetcore-dev
+    build:
+      context: .
+      dockerfile: Dockerfile.linux.dev
+    volumes:
+      - .:/var/www/app
+    ports:
+     - 5000:5000
+    networks:
+      - aspnetcoreapp-network
+
+  # nano-web:
+  #   container_name: 'aspnetcore-dev'
+  #   image: 'aspnetcore-dev'
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.nano.dev
+  #   volumes:
+  #     - .:/app
+  #   ports:
+  #    - "5000:5000"
+  #   networks:
+  #     - aspnetcoreapp-network
+
+networks:
+  aspnetcoreapp-network:
+    driver: bridge

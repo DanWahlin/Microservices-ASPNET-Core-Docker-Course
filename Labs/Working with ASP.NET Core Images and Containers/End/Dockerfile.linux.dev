@@ -1,0 +1,30 @@
+FROM        microsoft/aspnetcore-build
+MAINTAINER  Dan Wahlin
+
+ENV         ASPNETCORE_URLS=http://*:5000
+ENV         DOTNET_USE_POLLING_FILE_WATCHER=1
+ENV         ASPNETCORE_ENVIRONMENT=development
+
+WORKDIR     /var/www/app
+
+CMD        ["/bin/bash", "-c","dotnet restore && dotnet watch run"]
+
+# Run the following:
+# 1. docker build -f Dockerfile.linux.dev -t aspnetcore-dev .
+
+#### Windows   
+# You will need to use the absolute path to this file's parent folder in the command below (PATH_TO_YOUR_FOLDER)
+# Leave out the -d switch below if you want to see the container log output immediately
+# 2. docker run -p 5000:5000 -v C:\PATH_TO_YOUR_FOLDER:/var/www/app aspnetcore-dev
+
+#### Mac:   
+# Leave out the -d switch below if you want to see the container log output immediately   
+# 2. docker run -d -p 5000:5000 -v $(pwd):/var/www/app aspnetcore-dev
+
+# 3. A container ID will be displayed
+# 4. docker logs [first 3 characters of containerID from previous step]
+# 5. Once the logs show that the server is running (you may have to run the
+#    "docker logs" command multiple times), visit http://localhost:5000
+
+
+
