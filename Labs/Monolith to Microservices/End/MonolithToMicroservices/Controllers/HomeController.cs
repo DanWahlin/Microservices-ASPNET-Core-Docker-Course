@@ -16,7 +16,7 @@ namespace MonolithToMicroservices.Controllers
         ILogger _Logger;
 
         public HomeController(ICustomersRepository customersRepo, 
-            ILookupRepository lookupRepo,
+            ILookupRepository lookupRepo, 
             ILoggerFactory loggerFactory)
         {
             _CustomersRepo = customersRepo;

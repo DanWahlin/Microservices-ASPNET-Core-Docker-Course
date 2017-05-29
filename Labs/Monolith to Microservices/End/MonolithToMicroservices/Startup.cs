@@ -52,6 +52,11 @@ namespace MonolithToMicroservices
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
             // Serve wwwroot as root
             app.UseFileServer();
 
