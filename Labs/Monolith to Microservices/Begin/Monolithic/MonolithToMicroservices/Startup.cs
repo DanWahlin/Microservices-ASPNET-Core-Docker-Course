@@ -36,20 +36,11 @@ namespace MonolithToMicroservices
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Add PostgreSQL support
-            //services.AddEntityFrameworkNpgsql()
-            //  .AddDbContext<CustomersDbContext>(options =>
-            //     options.UseNpgsql(Configuration["Data:DbContext:CustomersPostgresConnectionString"]));
 
-            //Add SQL Server support
-            //services.AddEntityFrameworkSqlServer()
-            //    .AddDbContext<CustomersDbContext>(options =>
-            //       options.UseSqlServer(Configuration["Data:DbContext:CustomersSqlServerConnectionString"]));
-            
             //Add SqLite support
-            services.AddEntityFrameworkSqlite()
-                .AddDbContext<CustomersDbContext>(options =>
-                   options.UseSqlite(Configuration["Data:DbContext:CustomersSqliteConnectionString"]));
+            services.AddDbContext<CustomersDbContext>(options => {
+                options.UseSqlite(Configuration.GetConnectionString("CustomersSqliteConnectionString"));
+            });
 
             services.AddMvc();
 
