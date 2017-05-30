@@ -72,17 +72,6 @@ namespace MonolithToMicroservices
             // Serve wwwroot as root
             app.UseFileServer();
 
-            // Serve /node_modules as a separate root (for packages that use other npm modules client side)
-            // Added for convenience for those who don't want to worry about running 'gulp copy:libs'
-            // Only use in development mode!!
-            app.UseFileServer(new FileServerOptions()
-            {
-                // Set root of file server
-                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "node_modules")),
-                RequestPath = "/node_modules",
-                EnableDirectoryBrowsing = false
-            });
-
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

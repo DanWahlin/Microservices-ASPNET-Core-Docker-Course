@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonolithToMicroservices", "Angular-ASPNET-Core-CustomersService\MonolithToMicroservices.csproj", "{BB7AC950-6AAA-4108-9198-6C3C59F26246}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonolithToMicroservices", "MonolithToMicroservices\MonolithToMicroservices.csproj", "{BB7AC950-6AAA-4108-9198-6C3C59F26246}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
