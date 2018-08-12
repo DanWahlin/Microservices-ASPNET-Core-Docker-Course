@@ -22,7 +22,6 @@ namespace Customers.API.Repository
 
         public async Task SeedAsync(IServiceProvider serviceProvider)
         {
-            //Based on EF team's example at https://github.com/aspnet/MusicStore/blob/dev/samples/MusicStore/Models/SampleData.cs
             using (var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var customersDb = serviceScope.ServiceProvider.GetService<CustomersDbContext>();
@@ -38,7 +37,7 @@ namespace Customers.API.Repository
         public async Task InsertCustomersSampleData(CustomersDbContext db)
         {
             var httpClient = new HttpClient();
-            var statesString = await httpClient.GetStringAsync("http://localhost:5001/api/v1/lookup/states");
+            var statesString = await httpClient.GetStringAsync("http://lookup.api/api/v1/lookup/states");
             var states = JsonConvert.DeserializeObject<List<State>>(statesString);
             var customers = GetCustomers(states);
             db.Customers.AddRange(customers);

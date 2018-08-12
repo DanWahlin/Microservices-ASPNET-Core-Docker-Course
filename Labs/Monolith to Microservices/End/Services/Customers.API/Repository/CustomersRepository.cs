@@ -21,9 +21,10 @@ namespace Customers.API.Repository
 
         public async Task<List<Customer>> GetCustomersAsync()
         {
-            return await _Context.Customers
+            var customers = await _Context.Customers
                                  .OrderBy(c => c.LastName)
                                  .ToListAsync();
+            return customers;
         }
 
         public async Task<PagingResult<Customer>> GetCustomersPageAsync(int skip, int take)

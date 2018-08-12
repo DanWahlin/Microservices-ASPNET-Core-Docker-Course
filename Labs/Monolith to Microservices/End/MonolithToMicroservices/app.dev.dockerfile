@@ -1,6 +1,6 @@
-FROM microsoft/aspnetcore-build
+FROM microsoft/dotnet:sdk
 
-MAINTAINER Dan Wahlin
+LABEL author="Dan Wahlin"
 
 ENV DOTNET_USE_POLLING_FILE_WATCHER=1
 ENV ASPNETCORE_URLS=http://*:80
