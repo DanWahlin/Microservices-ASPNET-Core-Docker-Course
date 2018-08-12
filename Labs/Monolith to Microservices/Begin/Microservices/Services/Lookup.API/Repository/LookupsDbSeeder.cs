@@ -20,7 +20,6 @@ namespace Lookup.API.Repository
 
         public async Task SeedAsync(IServiceProvider serviceProvider)
         {
-            //Based on EF team's example at https://github.com/aspnet/MusicStore/blob/dev/samples/MusicStore/Models/SampleData.cs
             using (var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var lookupDb = serviceScope.ServiceProvider.GetService<LookupDbContext>();

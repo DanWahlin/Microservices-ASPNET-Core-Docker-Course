@@ -17,18 +17,12 @@ namespace MonolithToMicroservices
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -36,41 +30,19 @@ namespace MonolithToMicroservices
 
             services.AddMvc();
 
-            //Add code to map appsettings.json configuration data to the AppSettings object here
 
-               
 
-            //Add code to handle injecting repository and HttpClient classes here
 
-        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, 
-            IHostingEnvironment env, 
-            ILoggerFactory loggerFactory)
+            IHostingEnvironment env)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            // Serve wwwroot as root
-            app.UseFileServer();
-
-            // Serve /node_modules as a separate root (for packages that use other npm modules client side)
-            // Added for convenience for those who don't want to worry about running 'gulp copy:libs'
-            // Only use in development mode!!
-            //app.UseFileServer(new FileServerOptions()
-            //{
-            //    // Set root of file server
-            //    FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "node_modules")),
-            //    RequestPath = "/node_modules",
-            //    EnableDirectoryBrowsing = false
-            //});
 
             app.UseStaticFiles();
 
