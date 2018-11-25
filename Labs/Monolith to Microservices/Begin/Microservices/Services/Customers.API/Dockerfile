@@ -5,14 +5,13 @@ EXPOSE 44358
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY Customers.API/Customers.API.csproj Customers.API/
-RUN dotnet restore Customers.API/Customers.API.csproj
+COPY Customers.API.csproj .
+RUN dotnet restore
 COPY . .
-WORKDIR /src/Customers.API
-RUN dotnet build Customers.API.csproj -c Release -o /app
+RUN dotnet build -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish Customers.API.csproj -c Release -o /app
+RUN dotnet publish -c Release -o /app
 
 FROM base AS final
 WORKDIR /app

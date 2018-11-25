@@ -5,14 +5,13 @@ EXPOSE 44357
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY MonolithToMicroservices/MonolithToMicroservices.csproj MonolithToMicroservices/
-RUN dotnet restore MonolithToMicroservices/MonolithToMicroservices.csproj
+COPY MonolithToMicroservices.csproj .
+RUN dotnet restore
 COPY . .
-WORKDIR /src/MonolithToMicroservices
-RUN dotnet build MonolithToMicroservices.csproj -c Release -o /app
+RUN dotnet build -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish MonolithToMicroservices.csproj -c Release -o /app
+RUN dotnet publish -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
