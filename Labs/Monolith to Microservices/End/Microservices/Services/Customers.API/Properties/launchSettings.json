@@ -22,8 +22,7 @@
       "launchUrl": "api/v1/customers",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:5002"
+      }
     }
   }
 }
