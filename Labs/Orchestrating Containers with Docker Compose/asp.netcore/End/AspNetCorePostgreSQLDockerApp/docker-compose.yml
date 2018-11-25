@@ -26,5 +26,3 @@ services:
 networks:
   aspnetcoreapp-network:
     driver: bridge
-
-

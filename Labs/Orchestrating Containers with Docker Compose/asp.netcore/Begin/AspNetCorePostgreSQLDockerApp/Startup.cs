@@ -62,6 +62,15 @@ namespace AspNetCorePostgreSQLDockerApp
 
             });
 
+            services.AddCors(o => o.AddPolicy("AllowAllPolicy", options =>
+            {
+                options.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
+            services.AddRouting(options => options.LowercaseUrls = true);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,15 +86,6 @@ namespace AspNetCorePostgreSQLDockerApp
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            // Serve /node_modules as a separate root (for packages that use other npm modules client side)
-            // app.UseFileServer(new FileServerOptions()
-            // {
-            //     // Set root of file server
-            //     FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "node_modules")),
-            //     RequestPath = "/node_modules", 
-            //     EnableDirectoryBrowsing = false
-            // });
-
             app.UseStaticFiles();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint
@@ -98,19 +98,15 @@ namespace AspNetCorePostgreSQLDockerApp
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
+            app.UseCors("AllowAllPolicy");
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");                   
 
-                //https://github.com/aspnet/JavaScriptServices/blob/dev/samples/angular/MusicStore/Startup.cs
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Customers", action = "Index" });
-
-                // routes.MapRoute(
-                //     name: "spa-fallback",
-                //     template: "{*anything}",
-                //     defaults: new { controller="Customers", action="Index" });
             });
 
             customersDbSeeder.SeedAsync(app.ApplicationServices).Wait();
