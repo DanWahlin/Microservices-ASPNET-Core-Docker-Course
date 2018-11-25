@@ -31,7 +31,7 @@ services:
     volumes:
       - ../Services/Lookup.API:/var/www/app
     ports:
-     - "5001:80"
+     - "80"
     networks:
       - aspnetcoreapp-network
 
@@ -46,7 +46,7 @@ services:
     volumes:
       - ../Services/Customers.API:/var/www/app
     ports:
-     - "5002:80"
+     - "80"
     networks:
       - aspnetcoreapp-network
 

@@ -1,17 +1,17 @@
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
 WORKDIR /app
-EXPOSE 51834
-EXPOSE 44359
+EXPOSE 80
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY Lookup.API.csproj .
-RUN dotnet restore
+COPY Services/Lookup.API/Lookup.API.csproj Services/Lookup.API/
+RUN dotnet restore Services/Lookup.API/Lookup.API.csproj
 COPY . .
-RUN dotnet build -c Release -o /app
+WORKDIR /src/Services/Lookup.API
+RUN dotnet build Lookup.API.csproj -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish Lookup.API.csproj -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
