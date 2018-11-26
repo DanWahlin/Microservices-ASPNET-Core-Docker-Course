@@ -8,12 +8,9 @@ EXPOSE      5000
 
 WORKDIR     /app
 
-COPY        ./dist /app
+COPY        ./dist .
 
 ENTRYPOINT  ["dotnet", "ASPNET-Core-And-Docker.dll"]
-
-
-
 
 # Run the following:
 # 1. dotnet restore

@@ -3,6 +3,7 @@ LABEL       author="Your Name"
 
 ENV         ASPNETCORE_URLS=http://*:5000
 ENV         ASPNETCORE_ENVIRONMENT=production
+
 EXPOSE      5000
 
 WORKDIR     /var/www/app
