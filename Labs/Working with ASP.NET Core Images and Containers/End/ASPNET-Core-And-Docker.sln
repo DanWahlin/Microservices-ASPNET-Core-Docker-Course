@@ -1,25 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2042
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASPNET-Core-And-Docker", "ASPNET-Core-And-Docker.csproj", "{28598D50-85EB-475D-8E91-542F5645C56D}"
+VisualStudioVersion = 15.0.26124.0
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNET-Core-And-Docker", "ASPNET-Core-And-Docker\ASPNET-Core-And-Docker.csproj", "{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{28598D50-85EB-475D-8E91-542F5645C56D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{28598D50-85EB-475D-8E91-542F5645C56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{28598D50-85EB-475D-8E91-542F5645C56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{28598D50-85EB-475D-8E91-542F5645C56D}.Release|Any CPU.Build.0 = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CFE8EF71-2FB1-4F96-906A-388A593C755C}
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}.Debug|x64.Build.0 = Debug|Any CPU
+		{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}.Debug|x86.Build.0 = Debug|Any CPU
+		{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}.Release|x64.ActiveCfg = Release|Any CPU
+		{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}.Release|x64.Build.0 = Release|Any CPU
+		{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}.Release|x86.ActiveCfg = Release|Any CPU
+		{71C27FD9-F6BD-4957-A8E6-7B8E887AD819}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
