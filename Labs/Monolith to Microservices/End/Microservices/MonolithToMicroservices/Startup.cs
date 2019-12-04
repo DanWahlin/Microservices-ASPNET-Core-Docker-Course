@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -32,6 +33,7 @@ namespace MonolithToMicroservices
             services.AddOptions(); //Add ability to inject IOptions<T> for config data
             services.Configure<ApiSettings>(Configuration.GetSection("ApiSettings"));
 
+            services.AddAntiforgery();
             services.AddScoped<ICustomersRepository, CustomersRepository>();
             services.AddScoped<ILookupRepository, LookupRepository>();
             services.AddSingleton<IHttpClient, StandardHttpClient>();

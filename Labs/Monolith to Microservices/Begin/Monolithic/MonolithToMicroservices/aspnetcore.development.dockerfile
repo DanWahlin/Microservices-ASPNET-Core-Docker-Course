@@ -1,9 +1,9 @@
-FROM microsoft/dotnet:sdk
+FROM mcr.microsoft.com/dotnet/core/sdk
 
 LABEL author="Dan Wahlin"
 
 ENV DOTNET_USE_POLLING_FILE_WATCHER=1
-ENV ASPNETCORE_URLS=http://*:5000
+ENV ASPNETCORE_URLS=http://+:5000
 
 EXPOSE 5000
 

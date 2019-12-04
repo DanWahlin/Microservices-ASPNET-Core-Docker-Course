@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using MonolithToMicroservices.Repository;
-using Swashbuckle.AspNetCore.Swagger;
-using Swashbuckle.AspNetCore.SwaggerUI;
-using Microsoft.Extensions.FileProviders;
-using System.IO;
-using Microsoft.AspNetCore.Antiforgery;
-using Microsoft.AspNetCore.Http;
+
 
 namespace MonolithToMicroservices
 {
@@ -38,29 +36,31 @@ namespace MonolithToMicroservices
 
             services.AddMvc();
 
+            services.AddAntiforgery();
+
             services.AddScoped<ICustomersRepository, CustomersRepository>();
             services.AddScoped<ILookupRepository, LookupRepository>();
             services.AddScoped<IOrdersRepository, OrdersRepository>();
             services.AddTransient<CustomersDbSeeder>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, 
-            IHostingEnvironment env, 
+            IWebHostEnvironment env, 
             CustomersDbSeeder customersDbSeeder)
         {
-            //app.UseFileServer();
-
             app.UseStaticFiles();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+            app.UseRouting();
 
-                routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                // Handle redirecting client-side routes to Customers/Index route
+                endpoints.MapFallbackToController("Index", "Home");
 
             });
 
