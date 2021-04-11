@@ -1,6 +1,6 @@
 # Node.js with MongoDB and Docker Demo
 
-Application demo designed to show how Node.js and MongoDB can be run in Docker containers. 
+Application demo designed to show how Node.js and MongoDB can be run in Docker containers.
 The app uses Mongoose to create a simple database that stores Docker commands and examples.
 
 ##To run the app with Docker Containers:
@@ -27,7 +27,7 @@ The app uses Mongoose to create a simple database that stores Docker commands an
 
 2. Install Node.js (http://nodejs.org).
 
-3. Open `config/config.development.json` and adjust the host name to your MongoDB server name (`localhost` normally works if you're running locally). 
+3. Open `config/config.development.json` and adjust the host name to your MongoDB server name (`localhost` normally works if you're running locally).
 
 4. Run `npm install`.
 
@@ -38,7 +38,3 @@ The app uses Mongoose to create a simple database that stores Docker commands an
 7. Navigate to http://localhost:3000 in your browser.
 
 Interested in learning more about Docker? Visit https://www.pluralsight.com/courses/docker-web-development to view my Docker for Web Developers course.
-
-
-
-

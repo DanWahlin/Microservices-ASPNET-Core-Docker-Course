@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk
+FROM mcr.microsoft.com/dotnet/sdk:5.0
 
 LABEL author="Dan Wahlin"
 
@@ -9,4 +9,4 @@ EXPOSE 5000
 
 WORKDIR /var/www/aspnetcoreapp
 
-CMD ["/bin/bash", "-c", "dotnet restore && dotnet run"]
+CMD ["/bin/sh", "-c", "dotnet restore && dotnet run"]
