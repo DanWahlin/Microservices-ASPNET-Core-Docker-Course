@@ -8,20 +8,20 @@ services:
       context: .
       dockerfile: MonolithToMicroservices/Dockerfile
     depends_on:
-      - lookup.api
-      - customers.api
+      - lookup-api
+      - customers-api
 
-  lookup.api:
-    image: ${DOCKER_REGISTRY}lookupapi
+  lookup-api:
+    image: ${DOCKER_REGISTRY}lookup-api
     build:
       context: .
       dockerfile: Services/Lookup.API/Dockerfile
 
-  customers.api:
-    image: ${DOCKER_REGISTRY}customersapi
+  customers-api:
+    image: ${DOCKER_REGISTRY}customers-api
     build:
       context: .
       dockerfile: Services/Customers.API/Dockerfile
     depends_on:
-      - lookup.api
+      - lookup-api
 
