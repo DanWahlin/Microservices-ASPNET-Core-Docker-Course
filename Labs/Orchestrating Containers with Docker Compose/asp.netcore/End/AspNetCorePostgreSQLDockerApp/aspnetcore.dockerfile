@@ -10,7 +10,7 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["dotnet restore && dotnet run"]
+CMD ["/bin/sh", "-c", "dotnet restore && dotnet run"]
 
 # Note that this is only for demo and is intended to keep things simple.
 # A multi-stage dockerfile would normally be used here to build the .dll and use
