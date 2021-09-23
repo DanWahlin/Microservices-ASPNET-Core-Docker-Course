@@ -6,4 +6,4 @@ ENV DOTNET_USE_POLLING_FILE_WATCHER=1
 
 WORKDIR /var/www/app
 
-CMD ["dotnet restore && dotnet watch run"]
+CMD ["/bin/sh", "-c", "dotnet restore && dotnet watch run"]

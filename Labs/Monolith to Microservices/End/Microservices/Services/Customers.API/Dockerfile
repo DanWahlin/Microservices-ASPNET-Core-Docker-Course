@@ -16,4 +16,4 @@ RUN dotnet publish Customers.API.csproj -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-CMD ["dotnet", "Customers.API.dll"]
+ENTRYPOINT ["dotnet", "Customers.API.dll"]

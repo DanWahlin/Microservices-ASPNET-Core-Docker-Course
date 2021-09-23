@@ -16,4 +16,4 @@ RUN dotnet publish MonolithToMicroservices.csproj -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-CMD ["dotnet", "MonolithToMicroservices.dll"]
+ENTRYPOINT ["dotnet", "MonolithToMicroservices.dll"]

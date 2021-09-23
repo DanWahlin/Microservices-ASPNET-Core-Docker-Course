@@ -16,4 +16,4 @@ RUN dotnet publish Lookup.API.csproj -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-CMD ["dotnet", "Lookup.API.dll"]
+ENTRYPOINT ["dotnet", "Lookup.API.dll"]
