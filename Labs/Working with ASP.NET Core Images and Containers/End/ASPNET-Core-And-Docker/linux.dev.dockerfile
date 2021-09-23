@@ -9,7 +9,7 @@ EXPOSE      5000
 
 WORKDIR     /app
 
-CMD         ["/bin/bash", "-c", "dotnet restore && dotnet build && dotnet watch run"]
+CMD         ["/bin/sh", "-c", "dotnet restore && dotnet build && dotnet watch run"]
 
 
 # Run the following:

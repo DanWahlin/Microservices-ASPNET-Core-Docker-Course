@@ -9,7 +9,7 @@ EXPOSE      5000
 WORKDIR     /app
 COPY        ./dist .
 
-CMD         ["dotnet", "ASPNET-Core-And-Docker.dll"]
+ENTRYPOINT  ["dotnet", "ASPNET-Core-And-Docker.dll"]
 
 
 # Run the following:
